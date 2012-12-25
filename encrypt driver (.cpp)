@@ -1,0 +1,47 @@
+#include "Encrypt.h"
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+char key[70] = "7Xc9o8iImJsaL7caISca7sCDuhvb^W32/S2$5cas%feuyB&^BYgbc^v7^5fucgibyvgbB";
+
+encrypt::encrypt(){
+  
+	printf("Type a string(no whitespaces) to crypt: ");
+	scanf("%s", letters);
+	count=strlen(letters);
+}
+
+encrypt::encrypt(char in_word[70], int in_count){
+	strcpy(letters, in_word);
+	count = in_count;
+}
+
+char encrypt::encr(){
+	if(letters[1] == NULL || letters[1] == EOF){
+		
+	}
+	printf("ENTER ENCR() IS A SUCCESS\n");
+	puts(letters);
+	printf("Letters = %s\n\n\n", letters);
+	int ascii_chars[70];
+	for (int i=0; i<strlen(letters); i++){
+		ascii_chars[i] = int(letters[i]);
+		printf("%d", ascii_chars[i]);
+		}
+	
+	printf("**********************************************\n*******************************************\n");
+	for(int i=0; i<strlen(letters); i++){
+		ascii_chars[i] ^= int(key[i]);
+		if(ascii_chars[i]<0){
+			ascii_chars[i] = abs(ascii_chars[i]);
+			letters[i] = char(ascii_chars);
+		} else { 
+			letters[i] = char(ascii_chars);
+		}
+		printf("%d", ascii_chars[i]);
+	}
+	return letters[70];
+
+}
+	
